@@ -1,4 +1,4 @@
-import { ChainId } from '@aperture_finance/uniswap-smart-order-router'
+import { ChainId } from '@tendieswap/uniswap-smart-order-router'
 import { TradeType } from '@uniswap/sdk-core'
 
 export const PAIRS_TO_TRACK: Map<ChainId, Map<TradeType, string[]>> = new Map([

@@ -1,7 +1,7 @@
-import { ICache } from '@aperture_finance/uniswap-smart-order-router/build/main/providers/cache'
+import { ICache } from '@tendieswap/uniswap-smart-order-router/build/main/providers/cache'
 import { Pair } from '@uniswap/v2-sdk'
 import { BatchGetItemInput, DocumentClient } from 'aws-sdk/clients/dynamodb'
-import { log, metric, MetricLoggerUnit } from '@aperture_finance/uniswap-smart-order-router'
+import { log, metric, MetricLoggerUnit } from '@tendieswap/uniswap-smart-order-router'
 import { MarshalledPair, PairMarshaller } from '../../../marshalling'
 
 export class V2DynamoCache implements ICache<{ pair: Pair; block?: number }> {

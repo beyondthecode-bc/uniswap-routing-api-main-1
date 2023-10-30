@@ -35,7 +35,7 @@ import {
   TokenValidatorProvider,
   ITokenPropertiesProvider,
   TokenPropertiesProvider,
-} from '@aperture_finance/uniswap-smart-order-router'
+} from '@tendieswap/uniswap-smart-order-router'
 import { TokenList } from '@uniswap/token-lists'
 import { default as bunyan, default as Logger } from 'bunyan'
 import { ethers } from 'ethers'
@@ -52,7 +52,7 @@ import { DefaultEVMClient } from './evm/EVMClient'
 import { InstrumentedEVMProvider } from './evm/provider/InstrumentedEVMProvider'
 import { deriveProviderName } from './evm/provider/ProviderName'
 import { V2DynamoCache } from './pools/pool-caching/v2/v2-dynamo-cache'
-import { OnChainTokenFeeFetcher } from '@aperture_finance/uniswap-smart-order-router/build/main/providers/token-fee-fetcher'
+import { OnChainTokenFeeFetcher } from '@tendieswap/uniswap-smart-order-router/build/main/providers/token-fee-fetcher'
 
 export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.MAINNET,

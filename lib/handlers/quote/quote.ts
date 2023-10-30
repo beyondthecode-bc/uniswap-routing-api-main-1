@@ -15,7 +15,7 @@ import {
   SimulationStatus,
   IMetric,
   ID_TO_NETWORK_NAME,
-} from '@aperture_finance/uniswap-smart-order-router'
+} from '@tendieswap/uniswap-smart-order-router'
 import { Pool } from '@uniswap/v3-sdk'
 import JSBI from 'jsbi'
 import _ from 'lodash'

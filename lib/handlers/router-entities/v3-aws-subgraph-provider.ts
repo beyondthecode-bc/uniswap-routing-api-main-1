@@ -1,4 +1,4 @@
-import { IV3SubgraphProvider, log, V3SubgraphPool, V3SubgraphProvider } from '@aperture_finance/uniswap-smart-order-router'
+import { IV3SubgraphProvider, log, V3SubgraphPool, V3SubgraphProvider } from '@tendieswap/uniswap-smart-order-router'
 import { S3 } from 'aws-sdk'
 import { ChainId } from '@uniswap/sdk-core'
 import _ from 'lodash'

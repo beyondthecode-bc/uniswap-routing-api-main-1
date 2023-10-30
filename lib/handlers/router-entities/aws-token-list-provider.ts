@@ -5,7 +5,7 @@ import {
   ITokenProvider,
   log,
   NodeJSCache,
-} from '@aperture_finance/uniswap-smart-order-router'
+} from '@tendieswap/uniswap-smart-order-router'
 import { TokenList } from '@uniswap/token-lists'
 import S3 from 'aws-sdk/clients/s3'
 import NodeCache from 'node-cache'

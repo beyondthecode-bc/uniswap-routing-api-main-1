@@ -1,4 +1,4 @@
-import { ChainId, SUPPORTED_CHAINS } from '@aperture_finance/uniswap-smart-order-router'
+import { ChainId, SUPPORTED_CHAINS } from '@tendieswap/uniswap-smart-order-router'
 import * as cdk from 'aws-cdk-lib'
 import { CfnOutput, Duration } from 'aws-cdk-lib'
 import * as aws_apigateway from 'aws-cdk-lib/aws-apigateway'

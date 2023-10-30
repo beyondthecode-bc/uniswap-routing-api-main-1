@@ -5,8 +5,8 @@ import {
   USDC_MAINNET as USDC,
   USDT_MAINNET as USDT,
   WRAPPED_NATIVE_CURRENCY,
-} from '@aperture_finance/uniswap-smart-order-router/build/main/index'
-import { V3PoolAccessor } from '@aperture_finance/uniswap-smart-order-router/build/main/providers/v3/pool-provider'
+} from '@tendieswap/uniswap-smart-order-router/build/main/index'
+import { V3PoolAccessor } from '@tendieswap/uniswap-smart-order-router/build/main/providers/v3/pool-provider'
 import _ from 'lodash'
 
 export const USDC_DAI_LOW = new Pool(USDC, DAI, FeeAmount.LOW, encodeSqrtRatioX96(1, 1), 10, 0)

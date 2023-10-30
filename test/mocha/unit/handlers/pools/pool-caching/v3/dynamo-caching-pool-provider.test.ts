@@ -4,10 +4,10 @@ import { getMockedV3PoolProvider, TEST_ROUTE_TABLE } from '../../../../../../tes
 import { SUPPORTED_POOLS } from '../../../../../../test-utils/mocked-data'
 import { ChainId, Token } from '@uniswap/sdk-core'
 import { FeeAmount, Pool } from '@uniswap/v3-sdk'
-import { ProviderConfig } from '@aperture_finance/uniswap-smart-order-router/build/main/providers/provider'
+import { ProviderConfig } from '@tendieswap/uniswap-smart-order-router/build/main/providers/provider'
 import { expect } from 'chai'
 import { DynamoCachingV3Pool } from '../../../../../../../lib/handlers/pools/pool-caching/v3/cache-dynamo-pool'
-import { log } from '@aperture_finance/uniswap-smart-order-router'
+import { log } from '@tendieswap/uniswap-smart-order-router'
 
 describe('DynamoDBCachingV3PoolProvider', async () => {
   setupTables(TEST_ROUTE_TABLE)

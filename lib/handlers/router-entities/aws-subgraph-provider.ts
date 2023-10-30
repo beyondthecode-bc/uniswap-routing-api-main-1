@@ -6,7 +6,7 @@ import {
   log,
   V2SubgraphPool,
   V3SubgraphPool,
-} from '@aperture_finance/uniswap-smart-order-router'
+} from '@tendieswap/uniswap-smart-order-router'
 import { S3 } from 'aws-sdk'
 import NodeCache from 'node-cache'
 import { S3_POOL_CACHE_KEY } from '../../util/pool-cache-key'

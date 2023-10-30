@@ -1,5 +1,5 @@
-import { CachedRoute } from '@aperture_finance/uniswap-smart-order-router'
-import { MixedRoute, V2Route, V3Route } from '@aperture_finance/uniswap-smart-order-router/build/main/routers'
+import { CachedRoute } from '@tendieswap/uniswap-smart-order-router'
+import { MixedRoute, V2Route, V3Route } from '@tendieswap/uniswap-smart-order-router/build/main/routers'
 import { MarshalledRoute, RouteMarshaller } from './route-marshaller'
 
 export interface MarshalledCachedRoute {

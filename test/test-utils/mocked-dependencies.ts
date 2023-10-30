@@ -1,4 +1,4 @@
-import { V3PoolProvider } from '@aperture_finance/uniswap-smart-order-router'
+import { V3PoolProvider } from '@tendieswap/uniswap-smart-order-router'
 import { Pool } from '@uniswap/v3-sdk'
 import {
   buildMockV3PoolAccessor,

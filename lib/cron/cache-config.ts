@@ -1,5 +1,5 @@
 import { Protocol } from '@uniswap/router-sdk'
-import { ChainId, V3SubgraphProvider } from '@aperture_finance/uniswap-smart-order-router'
+import { ChainId, V3SubgraphProvider,V2SubgraphProvider } from '@tendieswap/uniswap-smart-order-router'
 
 export const chainProtocols = [
   // V3.
@@ -62,12 +62,11 @@ export const chainProtocols = [
   // Currently there is no working V3 subgraph for Optimism so we use a static provider.
 
   // V2.
-  /*
   {
     protocol: Protocol.V2,
-    chainId: ChainId.MAINNET,
+    chainId: ChainId.TENET,
     timeout: 840000,
-    provider: new V2SubgraphProvider(ChainId.MAINNET, 3, 900000, true, 1000), // 1000 is the largest page size supported by thegraph
+    provider: new V2SubgraphProvider(ChainId.TENET, 3, 900000, true, 1000), // 1000 is the largest page size supported by thegraph
   },
-  */
+
 ]

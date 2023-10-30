@@ -1,5 +1,5 @@
 import Joi from '@hapi/joi'
-import { MethodParameters } from '@aperture_finance/uniswap-smart-order-router'
+import { MethodParameters } from '@tendieswap/uniswap-smart-order-router'
 
 export type TokenInRoute = {
   address: string

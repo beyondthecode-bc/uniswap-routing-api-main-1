@@ -8,7 +8,7 @@ import { ChainId, CurrencyAmount, TradeType } from '@uniswap/sdk-core'
 import JSBI from 'jsbi'
 import { FeeAmount, Pool } from '@uniswap/v3-sdk'
 import { WNATIVE_ON } from '../../../../../utils/tokens'
-import { CacheMode, CachedRoute, CachedRoutes, UNI_MAINNET, USDC_MAINNET, V3Route } from '@aperture_finance/uniswap-smart-order-router'
+import { CacheMode, CachedRoute, CachedRoutes, UNI_MAINNET, USDC_MAINNET, V3Route } from '@tendieswap/uniswap-smart-order-router'
 import { DynamoDBTableProps } from '../../../../../../bin/stacks/routing-database-stack'
 
 chai.use(chaiAsPromised)

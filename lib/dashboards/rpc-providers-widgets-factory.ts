@@ -1,8 +1,8 @@
 import { WidgetsFactory } from './core/widgets-factory'
 import { Widget } from './core/model/widget'
-import { ChainId } from '@aperture_finance/uniswap-smart-order-router'
+import { ChainId } from '@tendieswap/uniswap-smart-order-router'
 import _ from 'lodash'
-import { ID_TO_NETWORK_NAME } from '@aperture_finance/uniswap-smart-order-router/build/main/util/chains'
+import { ID_TO_NETWORK_NAME } from '@tendieswap/uniswap-smart-order-router/build/main/util/chains'
 import { ProviderName } from '../handlers/evm/provider/ProviderName'
 
 const ID_TO_PROVIDER = (id: ChainId): string => {

@@ -1,6 +1,6 @@
 import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
 import { Protocol } from '@uniswap/router-sdk'
-import { log, metric, ChainId, MetricLoggerUnit, SwapRoute } from '@aperture_finance/uniswap-smart-order-router'
+import { log, metric, ChainId, MetricLoggerUnit, SwapRoute } from '@tendieswap/uniswap-smart-order-router'
 
 export const getDistribution = (distributionPercent: number) => {
   const percents: Array<number> = new Array<number>()

@@ -34,7 +34,7 @@ import {
   USDC_BASE,
   USDC_BASE_GOERLI,
   USDC_TENET_TESTNET,
-} from '@aperture_finance/uniswap-smart-order-router'
+} from '@tendieswap/uniswap-smart-order-router'
 import { ethers } from 'ethers'
 import NodeCache from 'node-cache'
 

@@ -15,12 +15,12 @@ import {
   USDC_MAINNET,
   USDT_MAINNET,
   WBTC_MAINNET,
-} from '@aperture_finance/uniswap-smart-order-router'
+} from '@tendieswap/uniswap-smart-order-router'
 import {
   PERMIT2_ADDRESS,
   UNIVERSAL_ROUTER_ADDRESS as UNIVERSAL_ROUTER_ADDRESS_BY_CHAIN,
 } from '@uniswap/universal-router-sdk'
-import { MethodParameters } from '@aperture_finance/uniswap-smart-order-router'
+import { MethodParameters } from '@tendieswap/uniswap-smart-order-router'
 import { fail } from 'assert'
 import axiosStatic, { AxiosResponse } from 'axios'
 import axiosRetry from 'axios-retry'

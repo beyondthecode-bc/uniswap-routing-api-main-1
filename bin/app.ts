@@ -1,4 +1,4 @@
-import { ChainId } from '@aperture_finance/uniswap-smart-order-router'
+import { ChainId } from '@tendieswap/uniswap-smart-order-router'
 import * as cdk from 'aws-cdk-lib'
 import { CfnOutput, SecretValue, Stack, StackProps, Stage, StageProps } from 'aws-cdk-lib'
 import * as chatbot from 'aws-cdk-lib/aws-chatbot'
@@ -281,8 +281,8 @@ const jsonRpcProviders = {
   WEB3_RPC_56: process.env.JSON_RPC_PROVIDER_56!,
   WEB3_RPC_43114: process.env.JSON_RPC_PROVIDER_43114!,
   WEB3_RPC_8453: process.env.JSON_RPC_PROVIDER_8453!,
-  WEB3_RPC_3441005: process.env.JSON_RPC_PROVIDER_3441005!,
-  WEB3_RPC_169: process.env.JSON_RPC_PROVIDER_169!,
+  WEB3_RPC_1559: process.env.JSON_RPC_PROVIDER_1559!,
+  WEB3_RPC_155: process.env.JSON_RPC_PROVIDER_155!,
 }
 
 // Local dev stack

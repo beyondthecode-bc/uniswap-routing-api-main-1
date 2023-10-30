@@ -1,14 +1,13 @@
 {
-  "name": "@uniswap/routing-api",
+  "name": "@tendieswap/routing-api",
   "version": "0.2.0",
   "bin": {
     "app": "./dist/bin/app.js"
   },
   "license": "GPL",
-  "repository": "https://github.com/Uniswap/routing-api",
   "scripts": {
     "compile-external-types": "npx typechain --target ethers-v5 --out-dir lib/types/ext 'lib/abis/**/*.json'",
-    "compile-v3-contract-types": "npx typechain --target ethers-v5 --out-dir lib/types/v3 './node_modules/@uniswap/?(v3-core|v3-periphery)/artifacts/contracts/**/*.json'",
+    "compile-v3-contract-types": "npx typechain --target ethers-v5 --out-dir lib/types/v3 './node_modules/@uniswap/v3-core/artifacts/contracts/**/*.json'",
     "build": "run-p compile-external-types compile-v3-contract-types && tsc",
     "clean": "rm -rf dist cdk.out",
     "watch": "tsc -w",
@@ -62,7 +61,7 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@aperture_finance/uniswap-smart-order-router": "0.2.0",
+    "@tendieswap/uniswap-smart-order-router": "0.2.1",
     "@hapi/joi": "^17.1.1",
     "@middy/core": "^2.4.1",
     "@middy/http-error-handler": "^2.4.1",

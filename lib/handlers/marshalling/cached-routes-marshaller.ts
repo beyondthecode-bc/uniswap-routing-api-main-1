@@ -1,4 +1,4 @@
-import { CachedRoutes, ChainId } from '@aperture_finance/uniswap-smart-order-router'
+import { CachedRoutes, ChainId } from '@tendieswap/uniswap-smart-order-router'
 import { TradeType } from '@uniswap/sdk-core'
 import { Protocol } from '@uniswap/router-sdk'
 import { MarshalledToken, TokenMarshaller } from './token-marshaller'

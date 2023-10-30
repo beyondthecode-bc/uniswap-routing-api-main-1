@@ -10,7 +10,7 @@ import {
   TransactionReceipt,
   TransactionResponse,
 } from '@ethersproject/abstract-provider'
-import { metric, MetricLoggerUnit } from '@aperture_finance/uniswap-smart-order-router'
+import { metric, MetricLoggerUnit } from '@tendieswap/uniswap-smart-order-router'
 import { BigNumber, BigNumberish } from '@ethersproject/bignumber'
 import { Network, Networkish } from '@ethersproject/networks'
 import { ConnectionInfo } from '@ethersproject/web'

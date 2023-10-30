@@ -1,4 +1,4 @@
-import { GasPrice, IGasPriceProvider } from '@aperture_finance/uniswap-smart-order-router'
+import { GasPrice, IGasPriceProvider } from '@tendieswap/uniswap-smart-order-router'
 import { BigNumber } from 'ethers'
 
 export class StaticGasPriceProvider implements IGasPriceProvider {

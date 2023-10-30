@@ -1,4 +1,4 @@
-import { CacheMode } from '@aperture_finance/uniswap-smart-order-router'
+import { CacheMode } from '@tendieswap/uniswap-smart-order-router'
 
 interface CachedRoutesBucketsArgs {
   /**

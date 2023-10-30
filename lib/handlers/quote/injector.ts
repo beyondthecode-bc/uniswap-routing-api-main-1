@@ -7,7 +7,7 @@ import {
   setGlobalLogger,
   setGlobalMetric,
   V3HeuristicGasModelFactory,
-} from '@aperture_finance/uniswap-smart-order-router'
+} from '@tendieswap/uniswap-smart-order-router'
 import { MetricsLogger } from 'aws-embedded-metrics'
 import { APIGatewayProxyEvent, Context } from 'aws-lambda'
 import { default as bunyan, default as Logger } from 'bunyan'

@@ -1,4 +1,4 @@
-import { MixedRoute, V2Route, V3Route } from '@aperture_finance/uniswap-smart-order-router/build/main/routers'
+import { MixedRoute, V2Route, V3Route } from '@tendieswap/uniswap-smart-order-router/build/main/routers'
 import { Protocol } from '@uniswap/router-sdk'
 import { MarshalledToken, TokenMarshaller } from './token-marshaller'
 import { MarshalledPair, PairMarshaller } from './pair-marshaller'

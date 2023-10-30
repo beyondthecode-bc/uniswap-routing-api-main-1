@@ -1,4 +1,4 @@
-import { SimulationStatus } from '@aperture_finance/uniswap-smart-order-router'
+import { SimulationStatus } from '@tendieswap/uniswap-smart-order-router'
 import Logger from 'bunyan'
 
 export const simulationStatusToString = (simulationStatus: SimulationStatus | undefined, log: Logger) => {

@@ -1,5 +1,5 @@
 import { TradeType } from '@uniswap/sdk-core'
-import { CachedRoutes, ChainId } from '@aperture_finance/uniswap-smart-order-router'
+import { CachedRoutes, ChainId } from '@tendieswap/uniswap-smart-order-router'
 
 interface PairTradeTypeChainIdArgs {
   tokenIn: string

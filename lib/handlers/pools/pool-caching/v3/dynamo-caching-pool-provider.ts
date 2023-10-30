@@ -1,6 +1,6 @@
-import { ChainId, IV3PoolProvider, V3PoolAccessor } from '@aperture_finance/uniswap-smart-order-router'
+import { ChainId, IV3PoolProvider, V3PoolAccessor } from '@tendieswap/uniswap-smart-order-router'
 import { Token } from '@uniswap/sdk-core'
-import { ProviderConfig } from '@aperture_finance/uniswap-smart-order-router/build/main/providers/provider'
+import { ProviderConfig } from '@tendieswap/uniswap-smart-order-router/build/main/providers/provider'
 import { FeeAmount, Pool } from '@uniswap/v3-sdk'
 import { IDynamoCache } from '../cache-dynamo'
 import { DynamoCachingV3Pool } from './cache-dynamo-pool'
