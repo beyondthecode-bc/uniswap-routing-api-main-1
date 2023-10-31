@@ -1,6 +1,6 @@
 # Uniswap Routing API
 
-This repository contains routing API for TendieSwap's Uniswap V3 fork on Manta Pacific.
+This repository contains routing API for TendieSwap's Uniswap V3 fork on Tenet Network.
 
 It deploys an API to AWS that uses @tendiedev/uniswap-smart-order-router to search for the most efficient way to swap token A for token B.
 
@@ -16,7 +16,7 @@ The best way to develop and test the API is to deploy your own instance to AWS.
 2. Create .env file in the root directory of the project with :
    ```
    THROTTLE_PER_FIVE_MINS = '' # Optional
-   JSON_RPC_PROVIDER_155 = https://rpc.testnet.tenet.org
+   JSON_RPC_PROVIDER_155=https://rpc.testnet.tenet.org
    JSON_RPC_PROVIDER_1559=https://rpc.tenet.org
    ```
 3. Install and build the package
