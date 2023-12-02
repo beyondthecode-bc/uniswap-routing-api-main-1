@@ -1,6 +1,6 @@
 {
   "name": "@tendieswap/routing-api",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "bin": {
     "app": "./dist/bin/app.js"
   },
@@ -61,7 +61,6 @@
     "typescript": "^4.2.3"
   },
   "dependencies": {
-    "@tendieswap/uniswap-smart-order-router": "0.2.1",
     "@hapi/joi": "^17.1.1",
     "@middy/core": "^2.4.1",
     "@middy/http-error-handler": "^2.4.1",
@@ -70,6 +69,7 @@
     "@middy/input-output-logger": "^2.4.1",
     "@middy/validator": "^2.4.1",
     "@pinata/sdk": "^1.1.23",
+    "@tendieswap/uniswap-smart-order-router": "^0.2.7",
     "@typechain/ethers-v5": "^7.0.1",
     "@types/async-retry": "^1.4.2",
     "@types/chai-subset": "^1.3.3",
