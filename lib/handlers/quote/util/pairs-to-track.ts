@@ -1,5 +1,5 @@
 import { ChainId } from '@tendieswap/uniswap-smart-order-router'
-import { TradeType } from '@uniswap/sdk-core'
+import { TradeType } from '@tendieswap/sdk-core'
 
 export const PAIRS_TO_TRACK: Map<ChainId, Map<TradeType, string[]>> = new Map([
   [

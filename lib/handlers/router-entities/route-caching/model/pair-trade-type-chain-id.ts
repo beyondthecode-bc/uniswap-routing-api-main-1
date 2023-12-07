@@ -1,4 +1,4 @@
-import { TradeType } from '@uniswap/sdk-core'
+import { TradeType } from '@tendieswap/sdk-core'
 import { CachedRoutes, ChainId } from '@tendieswap/uniswap-smart-order-router'
 
 interface PairTradeTypeChainIdArgs {

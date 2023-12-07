@@ -4,7 +4,7 @@ import { getMockedV3PoolProvider, TEST_ROUTE_TABLE } from '../../../../../test-u
 import { CachingV3PoolProvider, MetricLoggerUnit, NodeJSCache } from '@tendieswap/uniswap-smart-order-router'
 import NodeCache from 'node-cache'
 import sinon from 'sinon'
-import { ChainId, Token } from '@uniswap/sdk-core'
+import { ChainId, Token } from '@tendieswap/sdk-core'
 import { encodeSqrtRatioX96, FeeAmount, Pool } from '@uniswap/v3-sdk'
 import {
   DAI_USDT_LOW,

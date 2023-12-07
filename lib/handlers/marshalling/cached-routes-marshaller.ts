@@ -1,5 +1,5 @@
 import { CachedRoutes, ChainId } from '@tendieswap/uniswap-smart-order-router'
-import { TradeType } from '@uniswap/sdk-core'
+import { TradeType } from '@tendieswap/sdk-core'
 import { Protocol } from '@uniswap/router-sdk'
 import { MarshalledToken, TokenMarshaller } from './token-marshaller'
 import { CachedRouteMarshaller, MarshalledCachedRoute } from './cached-route-marshaller'

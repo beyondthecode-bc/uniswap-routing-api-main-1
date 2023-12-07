@@ -1,6 +1,6 @@
 import { IV3SubgraphProvider, log, V3SubgraphPool, V3SubgraphProvider } from '@tendieswap/uniswap-smart-order-router'
 import { S3 } from 'aws-sdk'
-import { ChainId } from '@uniswap/sdk-core'
+import { ChainId } from '@tendieswap/sdk-core'
 import _ from 'lodash'
 import NodeCache from 'node-cache'
 
@@ -50,18 +50,18 @@ export class V3AWSSubgraphProviderWithFallback extends V3SubgraphProvider implem
         pools = _.map(
           pools,
           (pool) =>
-            ({
-              ...pool,
-              id: pool.id.toLowerCase(),
-              token0: {
-                id: pool.token0.id.toLowerCase(),
-              },
-              token1: {
-                id: pool.token1.id.toLowerCase(),
-              },
-              tvlETH: parseFloat(pool.totalValueLockedETH),
-              tvlUSD: parseFloat(pool.totalValueLockedUSD),
-            } as V3SubgraphPool)
+          ({
+            ...pool,
+            id: pool.id.toLowerCase(),
+            token0: {
+              id: pool.token0.id.toLowerCase(),
+            },
+            token1: {
+              id: pool.token1.id.toLowerCase(),
+            },
+            tvlETH: parseFloat(pool.totalValueLockedETH),
+            tvlUSD: parseFloat(pool.totalValueLockedUSD),
+          } as V3SubgraphPool)
         )
         log.info({ sample: pools.slice(0, 5) }, 'Converted legacy schema to new schema')
       }

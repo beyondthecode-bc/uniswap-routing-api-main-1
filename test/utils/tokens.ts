@@ -1,11 +1,12 @@
 import DEFAULT_TOKEN_LIST from '@uniswap/default-token-list'
-import { Token } from '@uniswap/sdk-core'
+import { Token } from '@tendieswap/sdk-core'
 import {
   CachingTokenListProvider,
   ChainId,
   DAI_ARBITRUM,
   DAI_AVAX,
   DAI_BNB,
+  DAI_TENET,
   DAI_GOERLI,
   DAI_MAINNET,
   DAI_OPTIMISM,
@@ -23,6 +24,8 @@ import {
   USDC_OPTIMISM,
   USDC_OPTIMISM_GOERLI,
   USDC_POLYGON,
+  USDT_TENET,
+  USDC_TENET,
   USDC_POLYGON_MUMBAI,
   USDC_SEPOLIA,
   USDT_ARBITRUM,
@@ -33,7 +36,6 @@ import {
   WRAPPED_NATIVE_CURRENCY,
   USDC_BASE,
   USDC_BASE_GOERLI,
-  USDC_TENET_TESTNET,
 } from '@tendieswap/uniswap-smart-order-router'
 import { ethers } from 'ethers'
 import NodeCache from 'node-cache'
@@ -86,6 +88,10 @@ export const DAI_ON = (chainId: ChainId): Token => {
       return DAI_BNB
     case ChainId.AVALANCHE:
       return DAI_AVAX
+    case ChainId.TENET_TESTNET:
+      return DAI_TENET
+    case ChainId.TENET:
+      return DAI_TENET
     default:
       throw new Error(`Chain id: ${chainId} not supported`)
   }
@@ -103,6 +109,10 @@ export const USDT_ON = (chainId: ChainId): Token => {
       return USDT_ARBITRUM
     case ChainId.BNB:
       return USDT_BNB
+    case ChainId.TENET_TESTNET:
+      return USDT_TENET
+    case ChainId.TENET:
+      return USDT_TENET
     default:
       throw new Error(`Chain id: ${chainId} not supported`)
   }
@@ -135,7 +145,9 @@ export const USDC_ON = (chainId: ChainId): Token => {
     case ChainId.BASE_GOERLI:
       return USDC_BASE_GOERLI
     case ChainId.TENET_TESTNET:
-      return USDC_TENET_TESTNET
+      return USDC_TENET
+    case ChainId.TENET:
+      return USDC_TENET
     default:
       throw new Error(`Chain id: ${chainId} not supported`)
   }

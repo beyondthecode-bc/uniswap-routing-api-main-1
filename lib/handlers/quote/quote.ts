@@ -1,8 +1,8 @@
 import Joi from '@hapi/joi'
 import { Protocol } from '@uniswap/router-sdk'
-import { UNIVERSAL_ROUTER_ADDRESS } from '@uniswap/universal-router-sdk'
+import { UNIVERSAL_ROUTER_ADDRESS } from '@tendieswap/universal-router-sdk-tenet'
 import { PermitSingle } from '@uniswap/permit2-sdk'
-import { Currency, CurrencyAmount, TradeType } from '@uniswap/sdk-core'
+import { Currency, CurrencyAmount, TradeType } from '@tendieswap/sdk-core'
 import {
   AlphaRouterConfig,
   ChainId,
@@ -73,8 +73,7 @@ export class QuoteHandler extends APIGLambdaHandler<
               errorCode: result?.errorCode,
               detail: result?.detail,
             },
-            `Quote 4XX Error [${result?.statusCode}] on ${ID_TO_NETWORK_NAME(chainId)} with errorCode '${
-              result?.errorCode
+            `Quote 4XX Error [${result?.statusCode}] on ${ID_TO_NETWORK_NAME(chainId)} with errorCode '${result?.errorCode
             }': ${result?.detail}`
           )
           break
@@ -355,8 +354,7 @@ export class QuoteHandler extends APIGLambdaHandler<
             swapParams,
             intent,
           },
-          `Exact In Swap: Give ${amount.toExact()} ${amount.currency.symbol}, Want: ${
-            currencyOut.symbol
+          `Exact In Swap: Give ${amount.toExact()} ${amount.currency.symbol}, Want: ${currencyOut.symbol
           }. Chain: ${chainId}`
         )
 
@@ -380,8 +378,7 @@ export class QuoteHandler extends APIGLambdaHandler<
             routingConfig: routingConfig,
             swapParams,
           },
-          `Exact Out Swap: Want ${amount.toExact()} ${amount.currency.symbol} Give: ${
-            currencyIn.symbol
+          `Exact Out Swap: Want ${amount.toExact()} ${amount.currency.symbol} Give: ${currencyIn.symbol
           }. Chain: ${chainId}`
         )
 
@@ -601,8 +598,8 @@ export class QuoteHandler extends APIGLambdaHandler<
       const metricPair = pairsTracked?.includes(tradingPair)
         ? tradingPair
         : pairsTracked?.includes(wildcardInPair)
-        ? wildcardInPair
-        : wildcardOutPair
+          ? wildcardInPair
+          : wildcardOutPair
 
       metric.putMetric(
         `GET_QUOTE_AMOUNT_${metricPair}_${tradeType.toUpperCase()}_CHAIN_${chainId}`,

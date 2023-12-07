@@ -1,6 +1,6 @@
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
 import { AllowanceTransfer, PermitSingle } from '@uniswap/permit2-sdk'
-import { Currency, CurrencyAmount, Ether, Fraction, Token, WETH9 } from '@uniswap/sdk-core'
+import { Currency, CurrencyAmount, Ether, Fraction, Token, WETH9 } from '@tendieswap/sdk-core'
 import {
   CEUR_CELO,
   CEUR_CELO_ALFAJORES,
@@ -19,7 +19,7 @@ import {
 import {
   PERMIT2_ADDRESS,
   UNIVERSAL_ROUTER_ADDRESS as UNIVERSAL_ROUTER_ADDRESS_BY_CHAIN,
-} from '@uniswap/universal-router-sdk'
+} from '@tendieswap/universal-router-sdk-tenet'
 import { MethodParameters } from '@tendieswap/uniswap-smart-order-router'
 import { fail } from 'assert'
 import axiosStatic, { AxiosResponse } from 'axios'
@@ -171,7 +171,7 @@ describe('quote', function () {
 
   before(async function () {
     this.timeout(40000)
-    ;[alice] = await ethers.getSigners()
+      ;[alice] = await ethers.getSigners()
 
     // Make a dummy call to the API to get a block number to fork from.
     const quoteReq: QuoteQueryParams = {
@@ -2063,6 +2063,6 @@ describe('alpha only quote', function () {
   this.timeout(5000)
 
   for (const type of ['exactIn', 'exactOut']) {
-    describe(`${type} 2xx`, () => {})
+    describe(`${type} 2xx`, () => { })
   }
 })

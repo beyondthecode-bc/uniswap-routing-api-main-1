@@ -1,5 +1,5 @@
 import { CacheMode } from '@tendieswap/uniswap-smart-order-router'
-import { ChainId, CurrencyAmount, Token, TradeType } from '@uniswap/sdk-core'
+import { ChainId, CurrencyAmount, Token, TradeType } from '@tendieswap/sdk-core'
 import {
   CachedRoutesBucket,
   CachedRoutesStrategy,
