@@ -89,7 +89,7 @@ const handler: ScheduledHandler = async (event: EventBridgeEvent<string, void>) 
   }
 
   // link resulting hash to DNS
-  const domain = process.env.STAGE == 'prod' ? 'ngaqccebja.execute-api.eu-north-1.amazonaws.com' : 'ngaqccebja.execute-api.eu-north-1.amazonaws.com'
+  const domain = process.env.STAGE == 'prod' ? 'https://tenet-routing.cryptoai.services' : 'https://tenet-routing.cryptoai.services'
   var params = {
     ChangeBatch: {
       Changes: [

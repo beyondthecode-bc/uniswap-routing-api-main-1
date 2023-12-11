@@ -1,4 +1,4 @@
-import { encodeSqrtRatioX96, Pool } from '@uniswap/v3-sdk'
+import { encodeSqrtRatioX96, Pool } from '@tendieswap/v3-sdk'
 import { FeeAmount } from '../utils/ticks'
 import {
   DAI_MAINNET as DAI,

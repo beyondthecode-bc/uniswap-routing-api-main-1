@@ -1,4 +1,4 @@
-import DEFAULT_TOKEN_LIST from '@uniswap/default-token-list'
+import DEFAULT_TOKEN_LIST from '@tendieswap/default-token-list'
 import { Token } from '@tendieswap/sdk-core'
 import {
   CachingTokenListProvider,

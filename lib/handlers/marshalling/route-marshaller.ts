@@ -1,9 +1,9 @@
 import { MixedRoute, V2Route, V3Route } from '@tendieswap/uniswap-smart-order-router/build/main/routers'
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from '@tendieswap/router-sdk'
 import { MarshalledToken, TokenMarshaller } from './token-marshaller'
 import { MarshalledPair, PairMarshaller } from './pair-marshaller'
 import { MarshalledPool, PoolMarshaller } from './pool-marshaller'
-import { Pool } from '@uniswap/v3-sdk'
+import { Pool } from '@tendieswap/v3-sdk'
 
 export interface MarshalledV2Route {
   protocol: Protocol

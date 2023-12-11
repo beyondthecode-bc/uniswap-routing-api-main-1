@@ -1,52 +1,8 @@
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from '@tendieswap/router-sdk'
 import { ChainId, V3SubgraphProvider, V2SubgraphProvider } from '@tendieswap/uniswap-smart-order-router'
 
 export const chainProtocols = [
   // V3.
-  /*
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.MAINNET,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(ChainId.MAINNET, 3, 90000),
-  },
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.ARBITRUM_ONE,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(ChainId.ARBITRUM_ONE, 3, 90000),
-  },
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.POLYGON,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(ChainId.POLYGON, 3, 90000),
-  },
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.CELO,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(ChainId.CELO, 3, 90000),
-  },
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.BNB,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(ChainId.BNB, 3, 90000),
-  },
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.AVALANCHE,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(ChainId.AVALANCHE, 3, 90000),
-  },
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.BASE,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(ChainId.BASE, 3, 90000),
-  },
-  */
   {
     protocol: Protocol.V3,
     chainId: ChainId.TENET_TESTNET,
@@ -66,7 +22,7 @@ export const chainProtocols = [
     protocol: Protocol.V2,
     chainId: ChainId.TENET,
     timeout: 840000,
-    provider: new V2SubgraphProvider(ChainId.TENET, 3, 900000, true, 250), // 1000 is the largest page size supported by thegraph
+    provider: new V2SubgraphProvider(ChainId.TENET, 3, 900000, true, 600), // 1000 is the largest page size supported by thegraph
   },
 
 ]

@@ -1,5 +1,5 @@
 import { Currency, CurrencyAmount } from '@tendieswap/sdk-core'
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from '@tendieswap/router-sdk'
 import { log, metric, ChainId, MetricLoggerUnit, SwapRoute } from '@tendieswap/uniswap-smart-order-router'
 
 export const getDistribution = (distributionPercent: number) => {

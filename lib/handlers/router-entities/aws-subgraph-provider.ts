@@ -1,4 +1,4 @@
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from '@tendieswap/router-sdk'
 import {
   ChainId,
   IV2SubgraphProvider,
@@ -15,7 +15,7 @@ const POOL_CACHE = new NodeCache({ stdTTL: 240, useClones: false })
 const LOCAL_POOL_CACHE_KEY = (chainId: ChainId, protocol: Protocol) => `pools${chainId}#${protocol}`
 
 export class AWSSubgraphProvider<TSubgraphPool extends V2SubgraphPool | V3SubgraphPool> {
-  constructor(private chain: ChainId, private protocol: Protocol, private bucket: string, private baseKey: string) {}
+  constructor(private chain: ChainId, private protocol: Protocol, private bucket: string, private baseKey: string) { }
 
   public async getPools(): Promise<TSubgraphPool[]> {
     log.info(`In new AWS subgraph provider for protocol ${this.protocol}`)

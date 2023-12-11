@@ -3,7 +3,7 @@ import { DynamoDBCachingV3PoolProvider } from '../../../../../../../lib/handlers
 import { getMockedV3PoolProvider, TEST_ROUTE_TABLE } from '../../../../../../test-utils/mocked-dependencies'
 import { SUPPORTED_POOLS } from '../../../../../../test-utils/mocked-data'
 import { ChainId, Token } from '@tendieswap/sdk-core'
-import { FeeAmount, Pool } from '@uniswap/v3-sdk'
+import { FeeAmount, Pool } from '@tendieswap/v3-sdk'
 import { ProviderConfig } from '@tendieswap/uniswap-smart-order-router/build/main/providers/provider'
 import { expect } from 'chai'
 import { DynamoCachingV3Pool } from '../../../../../../../lib/handlers/pools/pool-caching/v3/cache-dynamo-pool'

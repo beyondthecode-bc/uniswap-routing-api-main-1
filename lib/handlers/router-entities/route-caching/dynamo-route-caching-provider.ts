@@ -12,7 +12,7 @@ import {
 } from '@tendieswap/uniswap-smart-order-router'
 import { AWSError, DynamoDB, Lambda } from 'aws-sdk'
 import { Currency, CurrencyAmount, Fraction, Token, TradeType } from '@tendieswap/sdk-core'
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from '@tendieswap/router-sdk'
 import { PairTradeTypeChainId } from './model/pair-trade-type-chain-id'
 import { CachedRoutesMarshaller } from '../../marshalling/cached-routes-marshaller'
 import { MixedRoute, V2Route, V3Route } from '@tendieswap/uniswap-smart-order-router/build/main/routers'

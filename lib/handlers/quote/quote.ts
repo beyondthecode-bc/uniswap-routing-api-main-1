@@ -1,5 +1,5 @@
 import Joi from '@hapi/joi'
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from '@tendieswap/router-sdk'
 import { UNIVERSAL_ROUTER_ADDRESS } from '@tendieswap/universal-router-sdk-tenet'
 import { PermitSingle } from '@uniswap/permit2-sdk'
 import { Currency, CurrencyAmount, TradeType } from '@tendieswap/sdk-core'
@@ -16,7 +16,7 @@ import {
   IMetric,
   ID_TO_NETWORK_NAME,
 } from '@tendieswap/uniswap-smart-order-router'
-import { Pool } from '@uniswap/v3-sdk'
+import { Pool } from '@tendieswap/v3-sdk'
 import JSBI from 'jsbi'
 import _ from 'lodash'
 import { APIGLambdaHandler, ErrorResponse, HandleRequestParams, Response } from '../handler'

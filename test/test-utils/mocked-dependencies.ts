@@ -1,5 +1,5 @@
 import { V3PoolProvider } from '@tendieswap/uniswap-smart-order-router'
-import { Pool } from '@uniswap/v3-sdk'
+import { Pool } from '@tendieswap/v3-sdk'
 import {
   buildMockV3PoolAccessor,
   DAI_USDT_LOW,

@@ -5,7 +5,7 @@ import { CachingV3PoolProvider, MetricLoggerUnit, NodeJSCache } from '@tendieswa
 import NodeCache from 'node-cache'
 import sinon from 'sinon'
 import { ChainId, Token } from '@tendieswap/sdk-core'
-import { encodeSqrtRatioX96, FeeAmount, Pool } from '@uniswap/v3-sdk'
+import { encodeSqrtRatioX96, FeeAmount, Pool } from '@tendieswap/v3-sdk'
 import {
   DAI_USDT_LOW,
   SUPPORTED_POOLS,

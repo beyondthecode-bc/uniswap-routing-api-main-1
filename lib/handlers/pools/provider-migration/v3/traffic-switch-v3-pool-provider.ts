@@ -1,6 +1,6 @@
 import { IV3PoolProvider, log, metric, MetricLoggerUnit, V3PoolAccessor } from '@tendieswap/uniswap-smart-order-router'
 import { Token } from '@tendieswap/sdk-core'
-import { FeeAmount, Pool } from '@uniswap/v3-sdk'
+import { FeeAmount, Pool } from '@tendieswap/v3-sdk'
 import { ProviderConfig } from '@tendieswap/uniswap-smart-order-router/build/main/providers/provider'
 import { POOL_PROVIDER_TRAFFIC_SWITCH_CONFIGURATION } from '../../util/pool-provider-traffic-switch-configuration'
 import JSBI from 'jsbi'

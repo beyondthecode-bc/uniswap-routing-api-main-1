@@ -1,4 +1,4 @@
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from '@tendieswap/router-sdk'
 import { setGlobalLogger } from '@tendieswap/uniswap-smart-order-router'
 import { EventBridgeEvent, ScheduledHandler } from 'aws-lambda'
 import { S3 } from 'aws-sdk'
