@@ -10,7 +10,7 @@ import {
 import Logger from 'bunyan'
 
 export const SECONDS_PER_BLOCK_BY_CHAIN_ID: { [chainId in ChainId]?: number } = {
-  [ChainId.TENET]: 10,
+  [ChainId.TENET]: 30,
 }
 
 export const DEFAULT_ROUTING_CONFIG_BY_CHAIN = (chainId: ChainId): AlphaRouterConfig => {

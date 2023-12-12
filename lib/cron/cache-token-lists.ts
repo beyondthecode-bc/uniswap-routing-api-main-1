@@ -4,7 +4,7 @@ import axios from 'axios'
 import { default as bunyan, default as Logger } from 'bunyan'
 
 const TOKEN_LISTS = [
-  'https://raw.githubusercontent.com/kinetixfi/default-token-list/main/build/kinetix-default.tokenlist.json',
+  'https://emerald-manual-wallaby-729.mypinata.cloud/ipfs/QmdoDHS8DDV8o9azEX1JgFxewVvjfMMVkYEircus9PK15L',
 ]
 
 const handler: ScheduledHandler = async (event: EventBridgeEvent<string, void>) => {

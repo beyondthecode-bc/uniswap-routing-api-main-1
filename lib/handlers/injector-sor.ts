@@ -45,7 +45,7 @@ import { DefaultEVMClient } from './evm/EVMClient'
 import { InstrumentedEVMProvider } from './evm/provider/InstrumentedEVMProvider'
 import { deriveProviderName } from './evm/provider/ProviderName'
 
-export const SUPPORTED_CHAINS: ChainId[] = [ChainId.TENET_TESTNET, ChainId.TENET,]
+export const SUPPORTED_CHAINS: ChainId[] = [ChainId.TENET,]
 const DEFAULT_TOKEN_LIST = 'https://emerald-manual-wallaby-729.mypinata.cloud/ipfs/QmdoDHS8DDV8o9azEX1JgFxewVvjfMMVkYEircus9PK15L'
 
 export interface RequestInjected<Router> extends BaseRInj {
