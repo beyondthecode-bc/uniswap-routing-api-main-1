@@ -89,7 +89,7 @@ const handler: ScheduledHandler = async (event: EventBridgeEvent<string, void>) 
   }
 
   // link resulting hash to DNS
-  const domain = process.env.STAGE == 'prod' ? 'https://tenet-routing.cryptoai.services' : 'https://tenet-routing.cryptoai.services'
+  const domain = process.env.STAGE == 'prod' ? 'dex-api.kinetix.finance' : 'beta.dex-api.kinetix.finance'
   var params = {
     ChangeBatch: {
       Changes: [

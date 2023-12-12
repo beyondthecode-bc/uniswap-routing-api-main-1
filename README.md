@@ -1,8 +1,8 @@
-# Uniswap Routing API
+# Kinetix Routing API
 
-This repository contains routing API for TendieSwap's Uniswap V3 fork on Tenet Network.
+This repository contains routing API for the Kinetix V3 protocol.
 
-It deploys an API to AWS that uses @tendiedev/uniswap-smart-order-router to search for the most efficient way to swap token A for token B.
+It deploys an API to AWS that uses @kinetix/smart-order-router to search for the most efficient way to swap token A for token B.
 
 ## Development
 
@@ -16,8 +16,24 @@ The best way to develop and test the API is to deploy your own instance to AWS.
 2. Create .env file in the root directory of the project with :
    ```
    THROTTLE_PER_FIVE_MINS = '' # Optional
-   JSON_RPC_PROVIDER_155=https://rpc.testnet.tenet.org
-   JSON_RPC_PROVIDER_1559=https://rpc.tenet.org
+   JSON_RPC_PROVIDER_{CHAIN ID} = { RPC Provider}
+   # RPC Providers must be set for the following CHAIN IDs:
+   # MAINNET = 1
+   # ROPSTEN = 3
+   # RINKEBY = 4
+   # GOERLI = 5
+   # KOVAN = 42
+   # OPTIMISM = 10
+   # OPTIMISTIC_KOVAN = 69
+   # ARBITRUM_ONE = 42161
+   # ARBITRUM_RINKEBY = 421611
+   # POLYGON = 137
+   # POLYGON_MUMBAI = 80001
+   # BNB = 56
+   # KAVA = 2222
+   TENDERLY_USER = '' # For enabling Tenderly simulations
+   TENDERLY_PROJECT = '' # For enabling Tenderly simulations
+   TENDERLY_ACCESS_KEY = '' # For enabling Tenderly simulations
    ```
 3. Install and build the package
    ```
@@ -31,15 +47,36 @@ The best way to develop and test the API is to deploy your own instance to AWS.
    ```
    RoutingAPIStack.Url = https://...
    ```
-   We have a deployed stack with url https://vbcuqwld9d.execute-api.us-west-2.amazonaws.com/prod/. Our custom domain https://tenet-routing.tendieswap.app points to this stack.
    You can then try it out:
    ```
-   curl --request GET 'https://tenet-routing.tendieswap.app/quote?tokenInAddress=0xd6cb8a253e12893b0cF39Ca78F7d858652cCa1fe&tokenInChainId=1559&tokenOutAddress=0x0260F440AEa04a1690aB183Dd63C5596d66A9a43&tokenOutChainId=1559&amount=1000&type=exactIn'
+   curl --request GET '<INSERT_YOUR_URL_HERE>/quote?tokenInAddress=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2&tokenInChainId=1&tokenOutAddress=0x1f9840a85d5af5bf1d1762f925bdaddc4201f984&tokenOutChainId=1&amount=100&type=exactIn'
    ```
 
-### Integration Tests
+### Tenderly Simulation
 
-Note: integration tests have not been updated for Manta Pacific yet. Instructions kept below for future references.
+1. To get a more accurate estimate of the transaction's gas cost, request a tenderly simulation along with the swap. This is done by setting the optional query param "simulateFromAddress". For example:
+
+```
+curl --request GET '<INSERT_YOUR_URL_HERE>/quote?tokenInAddress=<0x...>&simulateFromAddress=<FROM_ADDRESS>&...'
+```
+
+2. Tenderly simulates the transaction and returns to us the simulated gasLimit as 'gasUseEstimate'. We use this gasLimit to update all our gas estimate heuristics. In the response body, the
+
+```
+{'gasUseEstimate':string, 'gasUseEstimateQuote':string, 'quoteGasAdjusted':string, and 'gasUseEstimateUSD':string}
+```
+
+fields will be updated/calculated using tenderly gasLimit estimate. These fields are already present even without Tenderly simulation, however in that case they are simply heuristics. The Tenderly gas estimates will be more accurate.
+
+3. If the simulation fails, there will be one more field present in the response body: 'simulationError'. If this field is set and it is set to true, that means the Tenderly Simulation failed. The
+
+```
+{'gasUseEstimate':string, 'gasUseEstimateQuote':string, 'quoteGasAdjusted':string, and 'gasUseEstimateUSD':string}
+```
+
+fields will still be included, however they will be heuristics rather then Tenderly estimates. These heuristic values are not reliable for sending transactions on chain.
+
+### Integration Tests
 
 The integration tests fetch quotes from your deployed API, then execute the swaps on a Hardhat mainnet fork.
 

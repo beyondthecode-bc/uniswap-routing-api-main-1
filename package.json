@@ -1,6 +1,6 @@
 {
   "name": "@tendieswap/routing-api",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "bin": {
     "app": "./dist/bin/app.js"
   },
@@ -70,11 +70,10 @@
     "@middy/input-output-logger": "^2.4.1",
     "@middy/validator": "^2.4.1",
     "@pinata/sdk": "^1.1.23",
-    "@tendieswap/default-token-list": "^0.0.1",
+    "@tendieswap/permit2-sdk": "^0.0.1",
     "@tendieswap/router-sdk": "^0.0.6",
     "@tendieswap/sdk-core": "^0.0.3",
-    "@tendieswap/uniswap-smart-order-router": "^0.3.10",
-    "@tendieswap/universal-router-sdk-tenet": "^0.0.6",
+    "@tendieswap/uniswap-smart-order-router": "^0.3.13",
     "@tendieswap/v2-sdk": "^0.0.10",
     "@tendieswap/v3-sdk": "^0.0.4",
     "@typechain/ethers-v5": "^7.0.1",
@@ -83,9 +82,7 @@
     "@types/qs": "^6.9.7",
     "@types/sinon": "^10.0.6",
     "@types/stats-lite": "^2.2.0",
-    "@uniswap/permit2-sdk": "^1.2.0",
     "@uniswap/token-lists": "^1.0.0-beta.33",
-    "@uniswap/v3-periphery": "^1.1.0",
     "async-retry": "^1.3.1",
     "aws-cdk-lib": "^2.85.0",
     "aws-embedded-metrics": "^2.0.6",

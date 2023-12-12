@@ -1,6 +1,5 @@
 import { Protocol } from '@tendieswap/router-sdk'
 import {
-  ChainId,
   IV2SubgraphProvider,
   IV3SubgraphProvider,
   log,
@@ -8,6 +7,7 @@ import {
   V3SubgraphPool,
 } from '@tendieswap/uniswap-smart-order-router'
 import { S3 } from 'aws-sdk'
+import { ChainId } from '@tendieswap/uniswap-smart-order-router'
 import NodeCache from 'node-cache'
 import { S3_POOL_CACHE_KEY } from '../../util/pool-cache-key'
 

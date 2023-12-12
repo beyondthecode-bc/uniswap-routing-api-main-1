@@ -1,5 +1,5 @@
-import { ChainId, IV3PoolProvider, V3PoolAccessor } from '@tendieswap/uniswap-smart-order-router'
-import { Token } from '@tendieswap/sdk-core'
+import { IV3PoolProvider, V3PoolAccessor } from '@tendieswap/uniswap-smart-order-router'
+import { ChainId, Token } from '@tendieswap/sdk-core'
 import { ProviderConfig } from '@tendieswap/uniswap-smart-order-router/build/main/providers/provider'
 import { FeeAmount, Pool } from '@tendieswap/v3-sdk'
 import { IDynamoCache } from '../cache-dynamo'

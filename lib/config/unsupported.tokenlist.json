@@ -1,13 +1,15 @@
 {
   "name": "Unsupported Tokens",
-  "timestamp": "2021-01-05T20:47:02.923Z",
+  "timestamp": "2023-09-05",
   "version": {
     "major": 1,
     "minor": 0,
     "patch": 0
   },
   "tags": {},
-  "logoURI": "ipfs://QmNa8mQkrNKp1WEEeGjFezDmDeodkWRevGFN8JCV7b4Xir",
-  "keywords": ["uniswap", "unsupported", "broken"],
-  "tokens": []
+  "logoURI": "https://res.cloudinary.com/kinetix/image/upload/v1693823981/website-assets/kinetix-logo.png",
+  "keywords": ["kinetix", "unsupported", "broken"],
+  "tokens": [
+    
+  ]
 }

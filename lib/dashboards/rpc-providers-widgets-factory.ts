@@ -7,22 +7,6 @@ import { ProviderName } from '../handlers/evm/provider/ProviderName'
 
 const ID_TO_PROVIDER = (id: ChainId): string => {
   switch (id) {
-    case ChainId.MAINNET:
-    case ChainId.OPTIMISM:
-    case ChainId.SEPOLIA:
-    case ChainId.POLYGON:
-    case ChainId.POLYGON_MUMBAI:
-    case ChainId.ARBITRUM_ONE:
-    case ChainId.ARBITRUM_GOERLI:
-    case ChainId.AVALANCHE:
-    case ChainId.GOERLI:
-      return ProviderName.INFURA
-    case ChainId.CELO:
-    case ChainId.BNB:
-    case ChainId.BASE:
-      return ProviderName.QUIKNODE
-    case ChainId.CELO_ALFAJORES:
-      return ProviderName.FORNO
     default:
       return ProviderName.UNKNOWN
   }
@@ -40,18 +24,14 @@ export class RpcProvidersWidgetsFactory implements WidgetsFactory {
   }
 
   generateWidgets(): Widget[] {
-    return this.generateWidgetsForMethod('CALL')
-      .concat(this.generateWidgetsForMethod('GETBLOCKNUMBER'))
-      .concat(this.generateWidgetsForMethod('GETGASPRICE'))
-      .concat(this.generateWidgetsForMethod('GETNETWORK'))
-      .concat(this.generateWidgetsForMethod('RESOLVENAME'))
+    return this.generateSuccessRatePerMethod('CALL')
+      .concat(this.generateSuccessRatePerMethod('GETBLOCKNUMBER'))
+      .concat(this.generateSuccessRatePerMethod('GETGASPRICE'))
+      .concat(this.generateSuccessRatePerMethod('GETNETWORK'))
+      .concat(this.generateSuccessRatePerMethod('RESOLVENAME'))
   }
 
-  private generateWidgetsForMethod(rpcMethod: string): Widget[] {
-    return this.generateRequestsWidgetForMethod(rpcMethod).concat(this.generateSuccessRateForMethod(rpcMethod))
-  }
-
-  private generateSuccessRateForMethod(rpcMethod: string): Widget[] {
+  private generateSuccessRatePerMethod(rpcMethod: string): Widget[] {
     const chainsWithIndices = this.chains.map((chainId, index) => {
       return { chainId: chainId, index: index }
     })
@@ -97,7 +77,7 @@ export class RpcProvidersWidgetsFactory implements WidgetsFactory {
 
     return [
       {
-        height: 10,
+        height: 6,
         width: 12,
         type: 'metric',
         properties: {
@@ -108,38 +88,6 @@ export class RpcProvidersWidgetsFactory implements WidgetsFactory {
           stat: 'SampleCount',
           period: 300,
           title: `RPC ${rpcMethod} Success Rate`,
-        },
-      },
-    ]
-  }
-
-  private generateRequestsWidgetForMethod(rpcMethod: string): Widget[] {
-    const chainsWithIndices = this.chains.map((chainId, index) => {
-      return { chainId: chainId, index: index }
-    })
-    const metrics = _.flatMap(chainsWithIndices, (chainIdAndIndex) => {
-      const chainId = chainIdAndIndex.chainId
-      const providerName = ID_TO_PROVIDER(chainId)
-
-      return [
-        [this.namespace, `RPC_${providerName}_${chainId}_${rpcMethod}_SUCCESS`, 'Service', 'RoutingAPI'],
-        [this.namespace, `RPC_${providerName}_${chainId}_${rpcMethod}_FAILURE`, 'Service', 'RoutingAPI'],
-      ]
-    })
-
-    return [
-      {
-        height: 10,
-        width: 12,
-        type: 'metric',
-        properties: {
-          metrics: metrics,
-          view: 'timeSeries',
-          stacked: true,
-          region: this.region,
-          stat: 'SampleCount',
-          period: 300,
-          title: `RPC ${rpcMethod} Requests`,
         },
       },
     ]

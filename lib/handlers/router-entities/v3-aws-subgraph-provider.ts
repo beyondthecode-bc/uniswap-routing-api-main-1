@@ -1,6 +1,5 @@
-import { IV3SubgraphProvider, log, V3SubgraphPool, V3SubgraphProvider } from '@tendieswap/uniswap-smart-order-router'
+import { ChainId, IV3SubgraphProvider, log, V3SubgraphPool, V3SubgraphProvider } from '@tendieswap/uniswap-smart-order-router'
 import { S3 } from 'aws-sdk'
-import { ChainId } from '@tendieswap/sdk-core'
 import _ from 'lodash'
 import NodeCache from 'node-cache'
 
@@ -12,7 +11,7 @@ export class V3AWSSubgraphProviderWithFallback extends V3SubgraphProvider implem
 
   constructor(private chain: ChainId, private bucket: string, key: string) {
     super(chain)
-    this.key = `${key}${chain != ChainId.MAINNET ? `-${chain}` : ''}`
+    this.key = `${key}${chain != ChainId.TENET ? `-${chain}` : ''}`
   }
 
   public async getPools(): Promise<V3SubgraphPool[]> {

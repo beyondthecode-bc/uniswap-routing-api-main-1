@@ -1,11 +1,12 @@
 import Joi from '@hapi/joi'
 import { Protocol } from '@tendieswap/router-sdk'
-import { UNIVERSAL_ROUTER_ADDRESS } from '@tendieswap/universal-router-sdk-tenet'
-import { PermitSingle } from '@uniswap/permit2-sdk'
+import {
+  UNIVERSAL_ROUTER_ADDRESS,
+} from '@tendieswap/universal-router-sdk-tenet';
+import { PermitSingle } from '@tendieswap/permit2-sdk'
 import { Currency, CurrencyAmount, TradeType } from '@tendieswap/sdk-core'
 import {
   AlphaRouterConfig,
-  ChainId,
   IRouter,
   MetricLoggerUnit,
   routeAmountsToString,
@@ -15,6 +16,7 @@ import {
   SimulationStatus,
   IMetric,
   ID_TO_NETWORK_NAME,
+  ChainId,
 } from '@tendieswap/uniswap-smart-order-router'
 import { Pool } from '@tendieswap/v3-sdk'
 import JSBI from 'jsbi'
@@ -35,8 +37,6 @@ import { utils } from 'ethers'
 import { simulationStatusToString } from './util/simulation'
 import Logger from 'bunyan'
 import { PAIRS_TO_TRACK } from './util/pairs-to-track'
-import { measureDistributionPercentChangeImpact } from '../../util/alpha-config-measurement'
-import { MetricsLogger } from 'aws-embedded-metrics'
 
 export class QuoteHandler extends APIGLambdaHandler<
   ContainerInjected,
@@ -48,7 +48,7 @@ export class QuoteHandler extends APIGLambdaHandler<
   public async handleRequest(
     params: HandleRequestParams<ContainerInjected, RequestInjected<IRouter<any>>, void, QuoteQueryParams>
   ): Promise<Response<QuoteResponse> | ErrorResponse> {
-    const { chainId, metric, log, quoteSpeed, intent } = params.requestInjected
+    const { chainId, metric, log } = params.requestInjected
     const startTime = Date.now()
 
     let result: Response<QuoteResponse> | ErrorResponse
@@ -89,17 +89,6 @@ export class QuoteHandler extends APIGLambdaHandler<
       // This metric is logged after calling the internal handler to correlate with the status metrics
       metric.putMetric(`GET_QUOTE_REQUESTED_CHAINID: ${chainId}`, 1, MetricLoggerUnit.Count)
       metric.putMetric(`GET_QUOTE_LATENCY_CHAIN_${chainId}`, Date.now() - startTime, MetricLoggerUnit.Milliseconds)
-
-      metric.putMetric(
-        `GET_QUOTE_LATENCY_CHAIN_${chainId}_QUOTE_SPEED_${quoteSpeed ?? 'standard'}`,
-        Date.now() - startTime,
-        MetricLoggerUnit.Milliseconds
-      )
-      metric.putMetric(
-        `GET_QUOTE_LATENCY_CHAIN_${chainId}_INTENT_${intent ?? 'quote'}`,
-        Date.now() - startTime,
-        MetricLoggerUnit.Milliseconds
-      )
     }
 
     return result
@@ -131,10 +120,7 @@ export class QuoteHandler extends APIGLambdaHandler<
         permitSigDeadline,
         enableUniversalRouter,
         quoteSpeed,
-        debugRoutingConfig,
-        unicornSecret,
         intent,
-        enableFeeOnTransferFeeFetching,
       },
       requestInjected: {
         router,
@@ -228,11 +214,6 @@ export class QuoteHandler extends APIGLambdaHandler<
       protocols = [Protocol.V3]
     }
 
-    let parsedDebugRoutingConfig = {}
-    if (debugRoutingConfig && unicornSecret && unicornSecret === process.env.UNICORN_SECRET) {
-      parsedDebugRoutingConfig = JSON.parse(debugRoutingConfig)
-    }
-
     const routingConfig: AlphaRouterConfig = {
       ...DEFAULT_ROUTING_CONFIG_BY_CHAIN(chainId),
       ...(minSplits ? { minSplits } : {}),
@@ -240,9 +221,7 @@ export class QuoteHandler extends APIGLambdaHandler<
       ...(forceMixedRoutes ? { forceMixedRoutes } : {}),
       protocols,
       ...(quoteSpeed ? QUOTE_SPEED_CONFIG[quoteSpeed] : {}),
-      ...parsedDebugRoutingConfig,
       ...(intent ? INTENT_SPECIFIC_CONFIG[intent] : {}),
-      ...(enableFeeOnTransferFeeFetching ? { enableFeeOnTransferFeeFetching } : {}),
     }
 
     metric.putMetric(`${intent}Intent`, 1, MetricLoggerUnit.Count)
@@ -417,7 +396,6 @@ export class QuoteHandler extends APIGLambdaHandler<
       methodParameters,
       blockNumber,
       simulationStatus,
-      hitsCachedRoute,
     } = swapRoute
 
     if (simulationStatus == SimulationStatus.Failed) {
@@ -544,7 +522,6 @@ export class QuoteHandler extends APIGLambdaHandler<
       route: routeResponse,
       routeString,
       quoteId,
-      hitsCachedRoutes: hitsCachedRoute,
     }
 
     this.logRouteMetrics(
@@ -558,8 +535,7 @@ export class QuoteHandler extends APIGLambdaHandler<
       type,
       chainId,
       amount,
-      routeString,
-      swapRoute
+      routeString
     )
 
     return {
@@ -579,16 +555,13 @@ export class QuoteHandler extends APIGLambdaHandler<
     tradeType: 'exactIn' | 'exactOut',
     chainId: ChainId,
     amount: CurrencyAmount<Currency>,
-    routeString: string,
-    swapRoute: SwapRoute
+    routeString: string
   ): void {
     const tradingPair = `${currencyIn.wrapped.symbol}/${currencyOut.wrapped.symbol}`
     const wildcardInPair = `${currencyIn.wrapped.symbol}/*`
     const wildcardOutPair = `*/${currencyOut.wrapped.symbol}`
     const tradeTypeEnumValue = tradeType == 'exactIn' ? TradeType.EXACT_INPUT : TradeType.EXACT_OUTPUT
     const pairsTracked = PAIRS_TO_TRACK.get(chainId)?.get(tradeTypeEnumValue)
-
-    measureDistributionPercentChangeImpact(5, 10, swapRoute, currencyIn, currencyOut, tradeType, chainId, amount)
 
     if (
       pairsTracked?.includes(tradingPair) ||
@@ -612,7 +585,6 @@ export class QuoteHandler extends APIGLambdaHandler<
         Date.now() - startTime,
         MetricLoggerUnit.Milliseconds
       )
-
       // Create a hashcode from the routeString, this will indicate that a different route is being used
       // hashcode function copied from: https://gist.github.com/hyamamoto/fd435505d29ebfa3d9716fd2be8d42f0?permalink_comment_id=4261728#gistcomment-4261728
       const routeStringHash = Math.abs(
@@ -645,13 +617,5 @@ export class QuoteHandler extends APIGLambdaHandler<
 
   protected responseBodySchema(): Joi.ObjectSchema | null {
     return QuoteResponseSchemaJoi
-  }
-
-  protected afterHandler(metric: MetricsLogger, response: QuoteResponse, requestStart: number): void {
-    metric.putMetric(
-      `GET_QUOTE_LATENCY_TOP_LEVEL_${response.hitsCachedRoutes ? 'CACHED_ROUTES_HIT' : 'CACHED_ROUTES_MISS'}`,
-      Date.now() - requestStart,
-      MetricLoggerUnit.Milliseconds
-    )
   }
 }

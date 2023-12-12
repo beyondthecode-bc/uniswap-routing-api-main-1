@@ -2,7 +2,7 @@ import { IMetric, MetricLoggerUnit } from '@tendieswap/uniswap-smart-order-route
 import { MetricsLogger as AWSEmbeddedMetricsLogger } from 'aws-embedded-metrics'
 
 export class AWSMetricsLogger implements IMetric {
-  constructor(private awsMetricLogger: AWSEmbeddedMetricsLogger) {}
+  constructor(private awsMetricLogger: AWSEmbeddedMetricsLogger) { }
 
   public putDimensions(dimensions: Record<string, string>): void {
     this.awsMetricLogger.putDimensions(dimensions)

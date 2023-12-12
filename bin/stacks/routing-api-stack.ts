@@ -1,5 +1,6 @@
-import { ChainId, SUPPORTED_CHAINS } from '@tendieswap/uniswap-smart-order-router'
+import { SUPPORTED_CHAINS } from '@tendieswap/uniswap-smart-order-router'
 import * as cdk from 'aws-cdk-lib'
+import { ChainId } from '@tendieswap/uniswap-smart-order-router'
 import { CfnOutput, Duration } from 'aws-cdk-lib'
 import * as aws_apigateway from 'aws-cdk-lib/aws-apigateway'
 import { MethodLoggingLevel } from 'aws-cdk-lib/aws-apigateway'
@@ -16,7 +17,7 @@ import { RoutingDashboardStack } from './routing-dashboard-stack'
 import { RoutingLambdaStack } from './routing-lambda-stack'
 import { RoutingDatabaseStack } from './routing-database-stack'
 
-export const CHAINS_NOT_MONITORED: ChainId[] = [ChainId.GOERLI, ChainId.POLYGON_MUMBAI]
+export const CHAINS_NOT_MONITORED: ChainId[] = []
 
 export class RoutingAPIStack extends cdk.Stack {
   public readonly url: CfnOutput
@@ -39,7 +40,6 @@ export class RoutingAPIStack extends cdk.Stack {
       tenderlyUser: string
       tenderlyProject: string
       tenderlyAccessKey: string
-      unicornSecret: string
     }
   ) {
     super(parent, name, props)
@@ -59,7 +59,6 @@ export class RoutingAPIStack extends cdk.Stack {
       tenderlyUser,
       tenderlyProject,
       tenderlyAccessKey,
-      unicornSecret,
     } = props
 
     const {
@@ -78,15 +77,11 @@ export class RoutingAPIStack extends cdk.Stack {
       hosted_zone,
     })
 
-    const {
-      routesDynamoDb,
-      routesDbCachingRequestFlagDynamoDb,
-      cachedRoutesDynamoDb,
-      cachingRequestFlagDynamoDb,
-      cachedV3PoolsDynamoDb,
-      cachedV2PairsDynamoDb,
-      tokenPropertiesCachingDynamoDb,
-    } = new RoutingDatabaseStack(this, 'RoutingDatabaseStack', {})
+    const { cachedRoutesDynamoDb, cachingRequestFlagDynamoDb, cachedV3PoolsDynamoDb } = new RoutingDatabaseStack(
+      this,
+      'RoutingDatabaseStack',
+      {}
+    )
 
     const { routingLambda, routingLambdaAlias } = new RoutingLambdaStack(this, 'RoutingLambdaStack', {
       poolCacheBucket,
@@ -100,14 +95,9 @@ export class RoutingAPIStack extends cdk.Stack {
       tenderlyUser,
       tenderlyProject,
       tenderlyAccessKey,
-      routesDynamoDb,
-      routesDbCachingRequestFlagDynamoDb,
       cachedRoutesDynamoDb,
       cachingRequestFlagDynamoDb,
       cachedV3PoolsDynamoDb,
-      cachedV2PairsDynamoDb,
-      tokenPropertiesCachingDynamoDb,
-      unicornSecret,
     })
 
     const accessLogGroup = new aws_logs.LogGroup(this, 'RoutingAPIGAccessLogs')
@@ -309,14 +299,14 @@ export class RoutingAPIStack extends cdk.Stack {
         period: Duration.minutes(30),
         usingMetrics: {
           simulationRequested: new aws_cloudwatch.Metric({
-            namespace: 'Uniswap',
+            namespace: 'Kinetix',
             metricName: `Simulation Requested`,
             dimensionsMap: { Service: 'RoutingAPI' },
             unit: aws_cloudwatch.Unit.COUNT,
             statistic: 'sum',
           }),
           simulationFailed: new aws_cloudwatch.Metric({
-            namespace: 'Uniswap',
+            namespace: 'Kinetix',
             metricName: `SimulationFailed`,
             dimensionsMap: { Service: 'RoutingAPI' },
             unit: aws_cloudwatch.Unit.COUNT,
